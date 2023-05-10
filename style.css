@@ -1,0 +1,70 @@
+/* * {
+    outline: 1px solid red;
+} */
+
+header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    background-color: bisque;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-col {
+    width: 20%;
+}
+
+.right-col {
+    width: 80%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.search-btn {
+    /* background-color: rgb(85, 129, 187); */
+    margin-top: 10px;
+}
+
+.city-list {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.city-list button {
+    margin: 10px;
+    border-radius: 5px;
+    background-color: rgb(185, 185, 185);
+}
+
+/* right side */
+
+.right-col {
+    padding: 20px;
+}
+
+.current-weather {
+    border: solid 1px black;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+.forecast-weather {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card {
+    width: 18%;
+}
