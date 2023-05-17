@@ -7,7 +7,12 @@ header {
     justify-content: center;
     width: 100%;
     padding: 20px;
-    background-color: bisque;
+    background-color: #34975A;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 50px;
 }
 
 main {
@@ -29,9 +34,15 @@ form {
     padding: 20px;
 }
 
+.city-search {
+    font-weight: bold;
+    font-size: 30px;
+}
+
 .search-btn {
     /* background-color: rgb(85, 129, 187); */
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .city-list {
@@ -58,6 +69,14 @@ form {
     margin-bottom: 25px;
 }
 
+#current-city {
+    font-weight: bold;
+}
+
+#current-temp, #current-wind, #current-humidity {
+    font-size: 20px;
+}
+
 .forecast-weather {
     display: flex;
     flex-direction: row;
@@ -67,4 +86,15 @@ form {
 
 .card {
     width: 18%;
+    background-color: #53F190;
+}
+
+.card-header {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.list-group-item {
+    background-color: #49D37E;
+    font-size: 18px;
 }

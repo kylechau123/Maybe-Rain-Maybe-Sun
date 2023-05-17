@@ -3,6 +3,8 @@ $(function() {
     var searchBtn = $("#search-btn");
     var cityForm = $("#city-form")
 
+    var savedCities = JSON.parse(localStorage.getItem("savedCities")) || []
+
     function getWeather (event) {
         event.preventDefault();
 
@@ -16,7 +18,15 @@ $(function() {
             $("#current-wind").text("Wind: " + data.wind.speed)
             $("#current-humidity").text("Humidity: " + data.main.humidity)
 
+            const currentIcon = $("<img>")
+            currentIcon.attr("src", "https://openweathermap.org/img/wn/"+ data.weather[0].icon +"@2x.png")
+            $("#current-city").append(currentIcon)
+
             getForecast()
+
+            saveCity()
+
+            loadCities()
         })
     }
 
@@ -41,6 +51,10 @@ $(function() {
         const cardHeader = $("<div>")
         cardHeader.addClass("card-header")
         cardHeader.text(dayjs(data.dt * 1000).format("MM/DD/YYYY"))
+
+        const cardImg = $("<img>")
+        cardImg.attr("src", "https://openweathermap.org/img/wn/"+ data.weather[0].icon +".png")
+        cardHeader.append(cardImg)
 
         const cardUl = $("<ul>")
         cardUl.addClass("list-group list-group-flush")
@@ -79,11 +93,51 @@ $(function() {
                 data.list[35],
             ]
 
+            $(".forecast-weather").html("")
+
             for(i=0; i < selection.length; i++) {
                 generateCards(selection[i])
             }
         })
     }
+
+    function saveCity () {
+        const inputCity = $("#city-input").val()
+
+        if(savedCities.includes(inputCity)) {
+            console.log("Already in saved cities!")
+        } else {
+            savedCities.push(inputCity)
+    
+            localStorage.setItem("savedCities", JSON.stringify(savedCities))
+
+        }
+
+    }
+
+    function loadCities () {
+        const cityList = $(".city-list")
+
+        cityList.html("")
+
+        for (i=0; i < savedCities.length; i++) {
+            const newBtn = $("<button>")
+            newBtn.text(savedCities[i])
+            
+            newBtn.on("click", (event) => {
+                activeBtn(event.target.textContent)
+            })
+            
+            cityList.append(newBtn)
+        }
+    }
+
+    function activeBtn (city) {
+        $("#city-input").val(city)
+        $("#search-btn").click()
+    }
+
+    loadCities()
     
 
 })
